@@ -1,3 +1,1 @@
-# mj_score_board_api
-
-## 
+# mj_score_board
