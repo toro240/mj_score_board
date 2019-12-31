@@ -2,13 +2,19 @@
 
 {% block contents %}
 <h1>Login</h1>
+<div id="loginAlert" class="alert alert-danger" role="alert" style="display: none;">
+</div>
 <div class="form-group">
-  <label for="exampleInputEmail1">Eメールアドレス</label>
-  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  <label for="exampleInputEmail1">メールアドレス</label>
+  <input id="loginEmail" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 </div>
 <div class="form-group">
   <label for="exampleInputPassword1">パスワード</label>
-  <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+  <input id="loginPassword" name="password" type="password" class="form-control" id="exampleInputPassword1">
 </div>
-<button type="submit" class="btn btn-primary">Submit</button>
+<button id="loginButton" type="submit" class="btn btn-primary">ログイン</button>
+
+{% load static %}
+<script src="{% static 'js/login/login.js' %}"></script>
+
 {% endblock contents %}
