@@ -1,0 +1,10 @@
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  </head>
+<body>
+  <div class="container">
+      {% block contents %}{% endblock %}
+  </div>
+</body>
