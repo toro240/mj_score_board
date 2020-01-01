@@ -44,7 +44,7 @@ $(function(){
           if (json["status"] === 401) {
             loginAlertShow([json["data"]["message"]]);
           } else {
-
+            location.href = 'complete'
           }
       },
       error: function(jqXHR, statusText, errorThrown) {

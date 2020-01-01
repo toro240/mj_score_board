@@ -8,3 +8,6 @@ from django.urls import reverse
 # Create your views here.
 def index(request):
     return render(request, 'login/index.html')
+
+def complete(request):
+    return render(request, 'login/index.html')
