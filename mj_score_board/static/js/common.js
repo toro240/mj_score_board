@@ -8,27 +8,38 @@
           var opt = $.extend({}, $.ajaxSettings, arg);
 
           opt.success = (function(func) {
-              return function(data, statusText, jqXHR) {
-                  if (func) {
-                      func(data, statusText, jqXHR);
-                  }
-              };
+            return function(data, statusText, jqXHR) {
+              console.log(data);
+              if (data["status"] === 500) {
+                mj_js.mj_modal_show({
+                  "title": "ERROR",
+                  "body": data["data"]["message"],
+                })
+              }
+              if (func) {
+                  func(data, statusText, jqXHR);
+              }
+            };
           })(opt.success);
 
           opt.error = (function(func) {
-              return function(jqXHR, statusText, errorThrown) {
-                  if (func) {
-                      func(jqXHR, statusText, errorThrown);
-                  }
-              };
+            return function(jqXHR, statusText, errorThrown) {
+              mj_js.mj_modal_show({
+                title: "ERROR",
+                body: "エラーが発生しました。時間を置いてから実行してください",
+              });
+              if (func) {
+                  func(jqXHR, statusText, errorThrown);
+              }
+            };
           })(opt.error);
 
           opt.complete = (function(func) {
-              return function(jqXHR, statusText) {
-                  if (func) {
-                      func(jqXHR, statusText);
-                  }
-              };
+            return function(jqXHR, statusText) {
+              if (func) {
+                  func(jqXHR, statusText);
+              }
+            };
           })(opt.complete);
 
           return $.ajax(opt);
