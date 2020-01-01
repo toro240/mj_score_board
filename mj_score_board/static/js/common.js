@@ -2,9 +2,7 @@
     var mj_js;
 
     mj_js = {
-        api_ajax : function(arg) {
-          var domain = "http://127.0.0.1:8001/";
-          arg["url"] = domain + arg["url"];
+        ajax : function(arg) {
           var opt = $.extend({}, $.ajaxSettings, arg);
 
           opt.success = (function(func) {

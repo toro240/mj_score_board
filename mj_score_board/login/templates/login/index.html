@@ -4,6 +4,7 @@
 <h1>Login</h1>
 <div id="loginAlert" class="alert alert-danger" role="alert" style="display: none;">
 </div>
+{% csrf_token %}
 <div class="form-group">
   <label for="exampleInputEmail1">ユーザー名</label>
   <input id="loginName" name="name" type="text" class="form-control" id="formGroupExampleInput">

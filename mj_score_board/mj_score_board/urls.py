@@ -19,6 +19,7 @@ from . import settings
 
 urlpatterns = [
     path('login/', include('login.urls')),
+    path('', include('score_board.urls')),
     path('admin/', admin.site.urls),
 ]
 

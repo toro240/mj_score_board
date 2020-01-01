@@ -11,10 +11,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+env = environ.Env()
+READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', True)
+env.read_env('.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -31,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'score_board.apps.ScoreBoardConfig',
     'login.apps.LoginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -174,5 +179,13 @@ LOGGING = {
             'propagate':True,
 
         },
+        'score_board':{
+            'handlers':['file','console'],
+            'level':'DEBUG',
+            'propagate':True,
+
+        },
     },
 }
+
+MJ_API_DOMAIN = env('MJ_API_DOMAIN')

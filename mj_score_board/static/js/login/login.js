@@ -30,13 +30,13 @@ $(function(){
       $(this).prop("disabled", false);
       return false
     }
-
-    mj_js.api_ajax({
-      url: 'login/auth',
-      crossDomain: true,
+    var token = $('input[name="csrfmiddlewaretoken"]').val() + '';
+    mj_js.ajax({
+      url: 'auth',
       type: 'POST',
       dataType: 'json',
       data: {
+        csrfmiddlewaretoken: token,
         user_name: user_name,
         password: password,
       },
@@ -44,7 +44,7 @@ $(function(){
           if (json["status"] === 401) {
             loginAlertShow([json["data"]["message"]]);
           } else {
-            location.href = 'complete'
+            location.href = '/'
           }
       },
       error: function(jqXHR, statusText, errorThrown) {

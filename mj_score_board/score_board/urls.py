@@ -2,8 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = 'login'
+app_name = 'score_board'
 urlpatterns = [
     path('', views.index, name='index'),
-    path('auth', views.auth, name='auth'),
 ]
