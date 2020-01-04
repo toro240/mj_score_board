@@ -11,6 +11,8 @@ logger = getLogger(__name__)
 
 # Create your views here.
 def index(request):
+    if request.session.keys() >= {"mj_session"}:
+        return redirect('/')
     return render(request, 'login/index.html')
 
 def auth(request):
