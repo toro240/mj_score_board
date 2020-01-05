@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http.response import JsonResponse
 from django.conf import settings
+from login.auth import not_logged_in
 import requests
 import json
 
@@ -10,10 +11,13 @@ from logging import getLogger
 logger = getLogger(__name__)
 
 # Create your views here.
+@not_logged_in
 def index(request):
-    if request.session.keys() >= {"mj_session"}:
-        return redirect('/')
     return render(request, 'login/index.html')
+
+@not_logged_in
+def new(request):
+    return render(request, 'login/new.html')
 
 def auth(request):
     ret = {
@@ -40,6 +44,7 @@ def auth(request):
 
     p_result = requests.post(url, query)
     ret = p_result.json()
+
     if ret["status"] == 200:
         request.session["mj_session"] = ret["data"]["aws_result"]["Session"]
         request.session["mj_user_name"] = ret["data"]["aws_result"]["ChallengeParameters"]["USER_ID_FOR_SRP"]

@@ -1,0 +1,26 @@
+.signin-break-wrapper {
+  background: #fff none repeat scroll 0 0;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+}
+
+.signin-break-wrapper::before {
+    background-color: #cbcbcb;
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.signin-break-wrapper span {
+    background: inherit;
+    padding: 0 10px;
+    position: relative;
+}

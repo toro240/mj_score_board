@@ -7,15 +7,15 @@
 
           opt.success = (function(func) {
             return function(data, statusText, jqXHR) {
-              console.log(data);
               if (data["status"] === 500) {
                 mj_js.mj_modal_show({
                   "title": "ERROR",
                   "body": data["data"]["message"],
                 })
-              }
-              if (func) {
-                  func(data, statusText, jqXHR);
+              } else {
+                if (func) {
+                    func(data, statusText, jqXHR);
+                }
               }
             };
           })(opt.success);

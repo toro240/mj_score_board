@@ -1,24 +1,28 @@
 {% extends "base.html" %}
 
 {% block contents %}
-<h1>ログイン</h1>
+<h1>アカウントの作成</h1>
 <div id="loginAlert" class="alert alert-danger" role="alert" style="display: none;">
 </div>
-{% csrf_token %}
+
 <div class="form-group">
   <label for="exampleInputEmail1">ユーザー名</label>
   <input id="loginName" name="name" type="text" class="form-control" id="formGroupExampleInput">
 </div>
 <div class="form-group">
+  <label for="exampleInputEmail1">メールアドレス</label>
+  <input id="loginMail" name="email" type="email" class="form-control" id="exampleFormControlInput1">
+</div>
+<div class="form-group">
   <label for="exampleInputPassword1">パスワード</label>
   <input id="loginPassword" name="password" type="password" class="form-control" id="exampleInputPassword1">
+  <small id="passwordHelp" class="form-text text-muted">8文字以上で数字と大文字と小文字を1文字以上</small>
 </div>
-<button id="loginButton" type="submit" class="btn btn-primary btn-lg btn-block">ログイン</button>
-
-<div class="signin-break-wrapper">
-  <span>ご利用は初めてですか?</span>
+<div class="form-group">
+  <label for="exampleInputPassword1">パスワード確認用</label>
+  <input id="loginConfirmPassword" name="password" type="password" class="form-control" id="exampleInputPassword2">
 </div>
-<button id="newUser" type="button" class="btn btn-secondary btn-lg btn-block">新しいアカウントの作成</button>
+<button id="createButton" type="submit" class="btn btn-primary btn-lg btn-block">アカウントの作成</button>
 
 {% load static %}
 <script src="{% static 'js/login/login.js' %}"></script>
