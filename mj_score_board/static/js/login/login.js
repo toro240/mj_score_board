@@ -107,6 +107,29 @@ $(function(){
       return false
     }
 
+    mj_js.ajax({
+      url: 'http://127.0.0.1:8001/login/new',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        user_name: user_name,
+        password: password,
+        mail_address: mail_address,
+      },
+      success: function(json, statusText, jqXHR) {
+        if (json["status"] === 401) {
+          loginAlertShow([json["data"]["message"]]);
+        } else {
+          // location.href = '/login'
+        }
+      },
+      error: function(jqXHR, statusText, errorThrown) {
+      },
+      complete: function(jqXHR, statusText) {
+        $("#loginButton").prop("disabled", false);
+      }
+    });
+
     $(this).prop("disabled", false);
   })
 
